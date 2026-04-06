@@ -1,0 +1,25 @@
+{
+    "name": "yanis/110-pulse",
+    "description": "Application d'animation et d'envoi d'images pour 110G",
+    "type": "project",
+    "require": {
+        "twig/twig": "^3.24",
+        "phpunit/phpunit": "^12.5"
+    },
+    "require-dev": {
+        "twig/twig": "^3.24",
+        "phpunit/phpunit": "^12.5"
+    },
+    "license": "AGPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Yanis\\110Pulse\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "YanisBCESI",
+            "email": "yanis.barral@viacesi.fr"
+        }
+    ]
+}
