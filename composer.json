@@ -13,7 +13,7 @@
     "license": "AGPL-3.0-or-later",
     "autoload": {
         "psr-4": {
-            "Yanis\\110Pulse\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
