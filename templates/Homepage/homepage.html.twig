@@ -2,16 +2,89 @@
 {% block body %}
 
 <header class="entete">
-    <div class="dropdown">
+    <div class="dropdown" data-controller = "dropdown">
         <span class="dropspan" data-action="click->dropdown#toggle">Fichier</span>
         <div class="dropdown-content" data-dropdown-target="menu">
-            <!--Mettre ici des <span> ou des <a> pour chaque option-->
-            <span>TEST</span>
-            <span>TEST</span>
-            <span>TEST</span>
-            <span>TEST</span>
+            <span data-action="click->dropdown#selectImage">Insérer une image</span>
+            <input type="file" accept=".jpg, .jpeg, .png" data-dropdown-target="imageInput" data-action="change->dropdown#imageSelected" hidden>
         </div>
     </div>
 </header>
 
+
+    <div class="fichiers-importes">
+        <span>Fichiers importés</span>
+        <div class="categorie-fichier" id="1">
+            <span>PLACEHOLDER FICHIER</span>
+        </div>
+    </div>
+
+    <main
+        class="editeur"
+        data-controller="image-editor"
+        data-action="dropdown:imageSelected->image-editor#imageSelected"
+    >
+
+        <section class="apercu">
+            <h2>Aperçu</h2>
+
+            <canvas data-image-editor-target="imageCanvas"></canvas>
+        </section>
+
+        <aside class="traitement">
+
+            <h2>Traitement</h2>
+
+            <div class="controle">
+                <label for="rows">
+                    Rangées
+                </label>
+
+                <input
+                    id="rows"
+                    type="number"
+                    min="1"
+                    value="10"
+                    data-image-editor-target="rows"
+                    data-action="change->image-editor#update"
+                >
+            </div>
+
+            <div class="controle">
+                <label for="seats">
+                    Places par rangée
+                </label>
+
+                <input
+                    id="seats"
+                    type="number"
+                    min="1"
+                    value="20"
+                    data-image-editor-target="seats"
+                    data-action="change->image-editor#update"
+                >
+            </div>
+
+            <label class="checkbox">
+                <input
+                    type="checkbox"
+                    data-image-editor-target="blackWhite"
+                    data-action="change->image-editor#update"
+                >
+
+                Noir et blanc
+            </label>
+
+            <div class="apercu-grille">
+                <h3>Grille spectateurs</h3>
+
+                <canvas
+                    data-image-editor-target="gridCanvas"
+                ></canvas>
+            </div>
+
+        </aside>
+
+    </main>
+</body>
 {% endblock %}

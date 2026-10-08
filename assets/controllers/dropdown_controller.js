@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller{
 
-    static targets = ["menu"];
+    static targets = ["menu", "imageInput"];
 
     connect(){
         this.close = this.close.bind(this);
@@ -19,6 +19,24 @@ export default class extends Controller{
     }
 
     close(){
+        this.menuTarget.classList.remove("show");
+    }
+
+    selectImage(event){
+        event.stopPropagation();
+        this.imageInputTarget.click();
+    }
+
+    imageSelected(event){
+        const file = event.target.files[0];
+        if(!file){
+            return;
+        }
+        this.dispatch("imageSelected", {
+            detail:{
+                file: file
+            }
+        });
         this.menuTarget.classList.remove("show");
     }
 }
